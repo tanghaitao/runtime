@@ -17,7 +17,7 @@ int main(int argc, const char * argv[]) {
         
 //        test();
         instrumentObjcMessageSends(YES);
-        [TZPerson walk];
+        [[TZPerson new] walk];
         instrumentObjcMessageSends(NO);
     }
     return 0;

@@ -14,9 +14,9 @@
 
 - (id) forwardingTargetForSelector:(SEL)aSelector {
     
-//    if (aSelector == @selector(walk)) {
-//        return [TZDog new];
-//    }
+        if (aSelector == @selector(walk)) {
+            return [TZDog new];// id, 只能转实例方法，return [TZDog class] 报错
+        }
     
     return [super forwardingTargetForSelector:aSelector];
 }
@@ -33,11 +33,12 @@
     
     NSLog(@"%s", __func__);//[TZPerson forwardInvocation:]
     
-//    [anInvocation invokeWithTarget:[TZDog new]];//[TZDog walk]
-
+    //    [anInvocation invokeWithTarget:[TZDog new]];//[TZDog walk]
+    
     /// 转发给自己
-    anInvocation.selector = @selector(run);//[TZDog run]
-   // anI
+//    anInvocation.target = [TZDog new];// -[TZDog run]
+    anInvocation.selector = @selector(run);//[TZPerson run]
+    // anImp
     [anInvocation invoke];
 }
 

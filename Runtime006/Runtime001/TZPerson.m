@@ -15,7 +15,8 @@
 + (id) forwardingTargetForSelector:(SEL)aSelector {
     
     if (aSelector == @selector(walk)) {
-//        return [TZDog new];
+//        return [TZDog new]; // 实例方法
+        return [TZDog class];// 类方法 两种都可以
     }
     
     return [super forwardingTargetForSelector:aSelector];
